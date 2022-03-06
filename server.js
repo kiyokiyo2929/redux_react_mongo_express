@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 3001
 const dbUrl = "mongodb+srv://redux:Kiyohide1979@cluster0.7vhgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
+
 app.use(express.static(path.join(__dirname,"client/build")))
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -53,10 +54,8 @@ mongoose.connect(dbUrl, dbErr => {
             }
         })
     })
+   
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname,"client/build/index.html"));
-    });
 
     app.delete("/api/list", (request, response) => {
         const {id} = request.body
@@ -70,6 +69,10 @@ mongoose.connect(dbUrl, dbErr => {
             }
         })
     })
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname,'../client/build/index.html'));
+    });
 
     app.listen(port, err => {
      if (err) throw new Error(err)
