@@ -4,10 +4,12 @@ import bodyParser from "body-parser";
 import Project from "./models/project"
 import path from "path";
 
+require('dotenv').config()
+
 const app = express();
 const port = process.env.PORT || 3001;
 const dbUrl = "mongodb+srv://redux:Kiyohide1979@cluster0.7vhgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
+// const dbUrl = process.env.MONGODB_URI
 
 app.use(express.static(path.join(__dirname,"client/build")))
 app.use(bodyParser.urlencoded({extended:true}));
