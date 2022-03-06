@@ -54,6 +54,10 @@ mongoose.connect(dbUrl, dbErr => {
         })
     })
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname,"client/build/index.html"));
+    });
+
     app.delete("/api/list", (request, response) => {
         const {id} = request.body
         Project.findByIdAndRemove(id, err => {
