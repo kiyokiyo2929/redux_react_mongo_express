@@ -70,9 +70,10 @@ mongoose.connect(dbUrl, dbErr => {
         })
     })
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname,'../client/build/index.html'));
-    });
+    app.get('*', (req, res, next) => {
+        // Serve index.html file if it doesn't recognize the route
+        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')); // <- Here !
+      });
 
     app.listen(port, err => {
      if (err) throw new Error(err)
