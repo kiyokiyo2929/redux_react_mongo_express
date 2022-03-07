@@ -8,7 +8,6 @@ require('dotenv').config()
 
 const app = express();
 const port = process.env.PORT || 3001;
-// const dbUrl = "mongodb+srv://redux:Kiyohide1979@cluster0.7vhgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const dbUrl = process.env.MONGODB_URI
 
 app.use(express.static(path.join(__dirname, 'client/build')))
@@ -73,7 +72,7 @@ mongoose.connect(dbUrl, dbErr => {
     })
 
     app.get('*', (req, res, next) => {
-        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')); // <- Here !
+        res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
       });
 
     app.listen(port, err => {
