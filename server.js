@@ -8,8 +8,8 @@ require('dotenv').config()
 
 const app = express();
 const port = process.env.PORT || 3001;
-const dbUrl = "mongodb+srv://redux:Kiyohide1979@cluster0.7vhgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-// const dbUrl = process.env.MONGODB_URI
+// const dbUrl = "mongodb+srv://redux:Kiyohide1979@cluster0.7vhgi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const dbUrl = process.env.MONGODB_URI
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(bodyParser.urlencoded({extended:true}));
@@ -73,7 +73,6 @@ mongoose.connect(dbUrl, dbErr => {
     })
 
     app.get('*', (req, res, next) => {
-        // Serve index.html file if it doesn't recognize the route
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')); // <- Here !
       });
 
