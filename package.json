@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "babel-node server.js",
-    "heroku-postbuild": "cd client && npm run build"
+    "build-development": "react-scripts build",
+    "build-staging": "react-scripts build",
+    "build-production": "react-scripts build"
   },
   "keywords": [],
   "author": "",
